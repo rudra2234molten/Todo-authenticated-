@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# Django local settings
+.env
+.env.*  # For files like .env.dev, .env.production etc
+config/settings/local.py
+
+# Migrations
+**/migrations/
+**/migrations/*.pyc
+**/migrations/*.py
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# Pipenv
+Pipfile.lock
+
+# Pytest
+.pytest_cache/

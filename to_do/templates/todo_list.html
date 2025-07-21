@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="shortcut icon" href="{% static '\checklist.png' %}" type="image/x-icon">
+  <title>Your Todos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #4a90e2;
+      --danger-color: #e74c3c;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --border-color: #ddd;
+      --card-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 5rem);
+    }
+
+    header h4{
+      padding: 5px 1px;
+      text-align: center;
+      background-color: #d1d1d1;
+      border-radius: 3px;
+      margin-bottom: 5px;
+    }
+
+    .create-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: min(0.4rem, 0.8rem);
+      white-space: nowrap;
+      margin-right: 5px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .create-btn:hover {
+      background-color: #357ab8;
+    }
+
+    .todo-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .todo-item {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .todo-content {
+      flex: 1;
+    }
+
+    .todo-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .todo-description {
+      color: #666;
+      margin: 0;
+    }
+
+    .delete-btn {
+      background-color: var(--danger-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-left: 1rem;
+      text-decoration: none;
+      text-align: center;
+    }
+    .update-btn {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-left: 1rem;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .no-todos {
+      text-align: center;
+      color: #666;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+    }
+
+    details {
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .todo-summary {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.5rem 0;
+    }
+
+    .todo-summary:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    .todo-summary h3 {
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .expand-icon {
+      transition: transform 0.3s ease;
+      font-size: 0.9rem;
+      margin-left: 1rem;
+    }
+
+    details[open] .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .todo-details {
+      padding: 0.5rem 0 1rem;
+      border-top: 1px solid #eee;
+      margin-top: 0.5rem;
+    }
+
+    .todo-description {
+      margin: 0.5rem 0;
+      color: #555;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>YOUR TODOS</h1>
+    <div>
+      <h4>Welcome {{user}}</h4>
+      <a href="{% url 'todo_form' %}" class="create-btn">CREATE TODO</a>
+      <a href="{% url 'logout' %}" class="create-btn">LOGOUT</a>
+    </div>
+  </header>
+
+  {% if todos %}
+  <ul class="todo-list">
+    {% for todo in todos %}
+    <li class="todo-item">
+      <div class="todo-content">
+        <details>
+          <summary class="todo-summary">
+            <h3 class="todo-title">{{ todo.tast }}</h3>
+            <span class="expand-icon">👇</span>
+          </summary>
+          <div class="todo-details">
+            <p class="todo-description">{{ todo.description }}</p>
+          </div>
+        </details>
+      </div>
+      <a href="{% url 'update_todo' todo.id %}" class="update-btn">UPDATE</a>
+      <a href="{% url 'delete_todo' todo.id %}" class="delete-btn">DELETE</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div class="no-todos">
+    <p>You don't have any todos yet. Create your first todo!</p>
+  </div>
+  {% endif %}
+</body>
+
+</html>
