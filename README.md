@@ -5,6 +5,7 @@
 <hr>
 <ul>
   <li>LOGIN AND LOGOUT SYSTEM</li>
+  <li>GOOGLE reCAPTCHA VERIFICATION</li>
   <li>AUTHENTICATED</li>
   <li>GOOD UI/UX DESIGN</li>
 </ul>
