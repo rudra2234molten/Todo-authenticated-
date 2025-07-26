@@ -30,4 +30,10 @@
 <h2>HOME SECTION</h2>
 <hr>
 <h2>COURSE SECTIONS</h2>
+<img width="1351" height="644" alt="Image" src="https://github.com/user-attachments/assets/b232545a-7396-4cbf-9340-b58847e47137" />
+<img width="1357" height="644" alt="Image" src="https://github.com/user-attachments/assets/71cbc796-23de-4ec3-934d-853c5d7b3e8d" />
+<img width="1347" height="639" alt="Image" src="https://github.com/user-attachments/assets/1157fe79-dfcb-4bce-865f-ed7fef5833ec" />
+<img width="1335" height="648" alt="Image" src="https://github.com/user-attachments/assets/3b2d6927-02fd-4957-9f90-6e0937e1a1d8" />
+<img width="1342" height="640" alt="Image" src="https://github.com/user-attachments/assets/b0e489b1-f0b8-458f-8dd2-ce4aee57c840" />
+
 
